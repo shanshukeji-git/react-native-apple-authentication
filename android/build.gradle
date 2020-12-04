@@ -2,10 +2,13 @@ buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
   def kotlin_version = rootProject.ext.has('kotlinVersion') ? rootProject.ext.get('kotlinVersion') : project.properties['AppleAuth_kotlinVersion']
 
-  repositories {
-    google()
-    jcenter()
-  }
+  
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+        mavenLocal()
+        mavenCentral()
+    }
 
   dependencies {
     classpath 'com.android.tools.build:gradle:4.0.1'
@@ -52,7 +55,10 @@ android {
 repositories {
   mavenCentral()
   jcenter()
-  google()
+  maven { url 'https://maven.aliyun.com/repository/google/' }
+  maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+  mavenLocal()
+  mavenCentral()
 
   def found = false
   def defaultDir = null
